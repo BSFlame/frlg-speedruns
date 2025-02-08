@@ -408,6 +408,7 @@ This guide is an interactive version of [PulseEffect's Any% Squirtle route](http
 
     - If you can survive two turns of Poison and a <PokeMove name="Tackle"/>
       then use <PokeItem name="Antidote" /> on <Pokemon name="Voltorb" />.
+    - Swap <PokeMove name="Tackle"/> and <PokeMove name="Water Gun"/> on T2 of <Pokemon name="Grimer" />.
     - <PoisonDamage
         name="wartortle"
         level={16}
@@ -507,16 +508,17 @@ This guide is an interactive version of [PulseEffect's Any% Squirtle route](http
       />
 
 - After the fight:
-  - Teach <PokeMove name="Water Pulse" /> over <PokeMove name="Tackle" /> (Slot 2).
+  - Teach <PokeMove name="Water Pulse" /> over <PokeMove name="Tackle" /> (Slot 1 if swapped).
   - Heal for Rival so you can survive a <PokeMove name="Quick Attack" /> and <PokeMove name="Vine Whip" />.
 
 ## Nugget Bridge
 
 - ### Rival
 
-  - <Pokemon name="Pidgeotto" />: <PokeMove name="Water Pulse" />, <PokeMove name="Bite" />
+  - <Pokemon name="Pidgeotto" />: <PokeMove name="Bite" /> ,<PokeMove name="Water Pulse" />
 
     - 25% (4/16) to OHKO with <PokeMove name="Water Pulse" /> Torrent
+    - <PokeMove name="Bite" /> + <PokeMove name="Water Pulse" /> is a 94.9% range without Torrent.
     - <MoveDamage
         name="Quick Attack"
         player={{ name: 'wartortle', level: 21, ev: 13 }}
@@ -616,7 +618,7 @@ This guide is an interactive version of [PulseEffect's Any% Squirtle route](http
   stateSelector={(store) => store.frlg.hikerExp}
   handleSelect={(store, id) => store.frlg.pickHikerExp(id)}
   items={[
-    { id: 'eric', text: 'Camper Flint' },
+    { id: 'allen', text: 'Camper Flint' },
     { id: 'nob', text: 'Hiker Nob' },
   ]}
 />
@@ -792,7 +794,7 @@ This guide is an interactive version of [PulseEffect's Any% Squirtle route](http
 
 - <StateContext>
     {({ frlg: { hikerExp } }) =>
-      hikerExp === 'eric' && (
+      hikerExp === 'allen' && (
         <>
           <p>Before fighting the rival:</p>
           <ul>
@@ -940,7 +942,7 @@ This guide is an interactive version of [PulseEffect's Any% Squirtle route](http
     </StateContext>
 
 - ### Leader Surge
-
+  - Swap <PokeMove name="Water Pulse" /> and <PokeMove name="Water Gun" />
   - <Pokemon name="Voltorb" />: <PokeMove name="Water Pulse" /> (x2)
     <StateContext>
       {({ frlg }) => (
@@ -990,7 +992,7 @@ This guide is an interactive version of [PulseEffect's Any% Squirtle route](http
 - Get the <PokeItem name="Bike Voucher" />, then run back to Cerulean City.
 
 ## Cerulean City
-
+- Swap <PokeItem name="TM Case" /> above the Bike.
 - Get the <PokeItem name="Bicycle" />, then register and use it.
 - Head to the right towards Rock Tunnel.
 
@@ -1057,7 +1059,7 @@ This guide is an interactive version of [PulseEffect's Any% Squirtle route](http
       <img
         alt="Rock Tunnel Map 2"
         src={
-          require(hikerExp === 'eric'
+          require(hikerExp === 'allen'
             ? '../../../static/img/frlg/RockTunnel-2.png'
             : '../../../static/img/frlg/RockTunnel-2-alt.png').default
         }
@@ -1115,19 +1117,7 @@ This guide is an interactive version of [PulseEffect's Any% Squirtle route](http
 
 - <StateContext>
     {({ frlg: { hikerExp } }) =>
-      hikerExp === 'eric' ? (
-        <>
-          <h3>Hiker Eric</h3>
-          <ul>
-            <li>
-              <Pokemon name="Machop" />: <PokeMove name="Water Pulse" />
-            </li>
-            <li>
-              <Pokemon name="Onix" />: <PokeMove name="Water Pulse" />
-            </li>
-          </ul>
-        </>
-      ) : (
+      hikerExp === 'allen' ? (
         <>
           <h3>Hiker Allen</h3>
           <ul>
@@ -1158,6 +1148,18 @@ This guide is an interactive version of [PulseEffect's Any% Squirtle route](http
   ![Rock Tunnel Map 4](../../../static/img/frlg/RockTunnel-4.png)
 
 - ### Jr Trainer Sofia
+ - <Pokemon name="Jigglypuff" />: <PokeMove
+      name="Water Gun"
+      torrent={true}
+    /> / <PokeMove name="Water Pulse" />
+ - <Pokemon name="Pidgey" />: <PokeMove
+      name="Water Gun"
+      torrent={true}
+    /> / <PokeMove name="Water Pulse" />
+ - <Pokemon name="Meowth" />: <PokeMove
+      name="Water Gun"
+      torrent={true}
+    /> / <PokeMove name="Water Pulse" />
 
   - <Pokemon name="Jigglypuff" />: <PokeMove name="Water Pulse" />
   - <Pokemon name="Pidgey" />: <PokeMove name="Water Pulse" />
@@ -1239,7 +1241,7 @@ This guide is an interactive version of [PulseEffect's Any% Squirtle route](http
 
 ## Rocket Hideout
 
-- Grab this <PokeItem name="Rare Candy" /> before going into the spinny tiles.
+- Grab this <PokeItem name="Rare Candy" /> after fighting Lift Key Grunt or before spinny tiles if going to level 35 now.
 
   ![Rare Candy](../../../static/img/frlg/RocketRareCandy.png)
 
@@ -1247,10 +1249,6 @@ This guide is an interactive version of [PulseEffect's Any% Squirtle route](http
 
   ![Rare Candy](../../../static/img/frlg/Blackglasses.png)
 
-- **Before** battling the lift key guy:
-
-  - <PokeItem name="Rare Candy" /> to level 35.
-  - Put your cursor on <PokeItem name="Escape Rope" />.
 
 - ### Rocket Grunt (Lift Key Guy)
 
@@ -1262,24 +1260,29 @@ This guide is an interactive version of [PulseEffect's Any% Squirtle route](http
 - ### Rocket Grunt
 
   - <Pokemon name="Sandshrew" />: <PokeMove name="Bite" />
-  - <Pokemon name="Sandslash" />: <PokeMove name="Water Pulse" />
-  - <Pokemon name="Ekans" />: <PokeMove name="Water Pulse" />
+  - <PokeMove name="Bite" /> is a 14/16 if left grunt first.
+  - <Pokemon name="Sandslash" />: <PokeMove name="Water Gun" />
+  - <Pokemon name="Ekans" />: <PokeMove name="Water Gun" torrent={true} /> / <PokeMove name="Water Pulse" />
 
 - ### Rocket Grunt
 
   - <Pokemon name="Ekans" />: <PokeMove name="Water Pulse" />
-  - <Pokemon name="Sandshrew" />: <PokeMove name="Bite" />
-  - <Pokemon name="Arbok" />: <PokeMove name="Water Pulse" torrent={true} /> or <PokeMove name="Bite" />
-    , <PokeMove name="Water Pulse" />
+  - <Pokemon name="Sandshrew" />: <PokeMove name="Water Gun" />
+  - <PokeMove name="Bite" /> is a 9/16 if right grunt first.
+  - <Pokemon name="Arbok" />: <PokeMove name="Water Pulse" torrent={true} /> / <PokeMove name="Bite" />, <PokeMove name="Water Pulse" />
+
 
     - <LevelUpStatGain
         name="wartortle"
         evolvesInto="blastoise"
-        level={35}
+        level={36}
         stat="hp"
         ev={{ before: 15, after: 15 }}
         adjustEV={adjustEV('afterEric')}
       />
+
+  - <PokeItem name="Rare Candy" /> to level 36.
+  - Put your cursor on <PokeItem name="Escape Rope" />.
 
 - ### Giovanni
 
@@ -1544,7 +1547,6 @@ This guide is an interactive version of [PulseEffect's Any% Squirtle route](http
 ## Safari Zone
 
 - Before the grass in the second area
-  - <PokeItem name="Rare Candy" /> to level 41.
   - Use <PokeItem name="Super Repel" />.
 - Grab this <PokeItem name="Full Restore" />.
 
@@ -1587,7 +1589,7 @@ This guide is an interactive version of [PulseEffect's Any% Squirtle route](http
     - Use <PokeItem name="X Sp Atk" text="X Special" /> if **60+ HP** or if in <Pokemon name="Weezing" /> kill range after level up.
     - <MoveDamage
         name="Sludge"
-        player={{ name: 'blastoise', level: 41, ev: 39 }}
+        player={{ name: 'blastoise', level: 39, ev: 39 }}
         enemy={{ name: 'muk', level: 39, atk: 77 }}
       />
     - <PoisonDamage
@@ -1602,12 +1604,12 @@ This guide is an interactive version of [PulseEffect's Any% Squirtle route](http
     / <PokeMove name="Water Pulse" />, <PokeMove name="Surf" />
 
     - <StateContext>
-        {({ starter }) => starter.spa >= 30 && '68.75% to OHKO'}
+        {({ starter }) => starter.spa >= 30 && '6/16 to OHKO'}
       </StateContext>
 
     - <MoveDamage
         name="Sludge"
-        player={{ name: 'blastoise', level: 42, ev: 39 }}
+        player={{ name: 'blastoise', level: 40, ev: 39 }}
         enemy={{ name: 'weezing', level: 43, atk: 82 }}
         adjustEV={adjustEV('afterEric')}
       />
@@ -1674,8 +1676,6 @@ This guide is an interactive version of [PulseEffect's Any% Squirtle route](http
 
 - Before exiting the mansion:
 
-  - Teach <PokeMove name="Strength" /> to <Pokemon name="Sandshrew" /> if you caught one.
-  - Teach <PokeMove name="Blizzard" /> over <PokeMove name="Mega Kick" /> (Slot 4).
   - <StateContext>
       {({ starter, frlg }) =>
         grabCarbosFor(starter, frlg.mtMoonExp) === 'blaine' && (
@@ -1697,7 +1697,7 @@ This guide is an interactive version of [PulseEffect's Any% Squirtle route](http
       {({ starter, frlg: { mtMoonExp } }) => (
         <>
           <Pokemon name="Growlithe" />:{' '}
-          {(starter.spe == 21 ||
+          {(starter.spe == 25 ||
             (grabCarbosFor(starter, mtMoonExp) === 'blaine' &&
               mtMoonExp === 'josh')) && (
             <>
@@ -1715,12 +1715,12 @@ This guide is an interactive version of [PulseEffect's Any% Squirtle route](http
     - Use <PokeMove name="Water Pulse" /> only if low PP on <PokeMove name="Surf" />.
     - <MoveDamage
         name="Take Down"
-        player={{ name: 'blastoise', level: 42, ev: 42, defBadge: true }}
+        player={{ name: 'blastoise', level: 40, ev: 42, defBadge: true }}
         enemy={{ name: 'growlithe', level: 42, atk: 63 }}
       />
     - <MoveDamage
         name="Fire Blast"
-        player={{ name: 'blastoise', level: 42, ev: 8 }}
+        player={{ name: 'blastoise', level: 40, ev: 8 }}
         enemy={{ name: 'growlithe', level: 42, atk: 63 }}
       />
 
@@ -1729,12 +1729,12 @@ This guide is an interactive version of [PulseEffect's Any% Squirtle route](http
 
     - <MoveDamage
         name="Bounce"
-        player={{ name: 'blastoise', level: 42, ev: 42, defBadge: true }}
+        player={{ name: 'blastoise', level: 41, ev: 42, defBadge: true }}
         enemy={{ name: 'rapidash', level: 42, atk: 80 }}
       />
     - <MoveDamage
         name="Fire Blast"
-        player={{ name: 'blastoise', level: 42, ev: 8 }}
+        player={{ name: 'blastoise', level: 41, ev: 8 }}
         enemy={{ name: 'rapidash', level: 42, atk: 72 }}
       />
 
@@ -1751,6 +1751,10 @@ This guide is an interactive version of [PulseEffect's Any% Squirtle route](http
 
   - <Pokemon name="Bellsprout" />: <PokeMove name="Bite" />
   - <Pokemon name="Bellsprout" />: <PokeMove name="Bite" />
+
+- Use <PokeItem name="Rare Candy"/> to level 44 here.
+- Teach <PokeMove name="Blizzard" /> over <PokeMove name="Mega Kick" /> (Slot 4).
+- Teach <PokeMove name="Strength" /> to <Pokemon name="Sandshrew" /> if you caught one.
 
 - ### Beauty Lori
 
@@ -1802,7 +1806,7 @@ This guide is an interactive version of [PulseEffect's Any% Squirtle route](http
       text="X Special"
     /> (x2), <PokeItem name="X Accuracy" />, <PokeMove name="Surf" />
 
-    - Use 2x <PokeItem name="X Sp Atk" text="X Special" /> if <PokeMove name="Feather Dance" /> turn 1.
+    - Use 2x <PokeItem name="X Sp Atk" text="X Special" /> if going for Gyarados range.
     - <MoveDamage
         name="Wing Attack"
         player={{ name: 'blastoise', level: 44, ev: 44, defBadge: true }}
@@ -1817,13 +1821,10 @@ This guide is an interactive version of [PulseEffect's Any% Squirtle route](http
   - <Pokemon name="Venusaur" />: <PokeMove name="Blizzard" />
   - <Pokemon name="Gyarados" />: <PokeMove name="Blizzard" />, <PokeMove name="Bite" />
 
-    - 68.75% (11/16) to OHKO at +2
+    - 68.75% (11/16) to OHKO at +2 at level 44, not a range at level 45.
 
   - <Pokemon name="Growlithe" />: <PokeMove name="Bite" />
-  - <Pokemon name="Alakazam" />: <PokeMove
-      name="Water Pulse"
-      torrent={true}
-    /> / <PokeMove name="Surf" />
+  - <Pokemon name="Alakazam" />: <PokeMove name="Surf" />
 
 - ### Rocket Grunt
 
@@ -1962,7 +1963,7 @@ This guide is an interactive version of [PulseEffect's Any% Squirtle route](http
 
 ## Route 22
 
-- Use <PokeItem name="Full Restore" /> before fighting the rival.
+- Use <PokeItem name="Full Restore" /> and <PokeItem name="Super Repel" /> , put cursor on X Accs before fighting the rival.
 - ### Rival
 
   - <Pokemon name="Pidgeot" />: <PokeItem
@@ -1999,11 +2000,10 @@ This guide is an interactive version of [PulseEffect's Any% Squirtle route](http
         enemy={{ name: 'alakazam', level: 47, atk: 140 }}
       />
 
-- Do not <PokeItem name="Super Repel" /> for the grass after Rival (1% chance to encounter).
 
 ## Victory Road
 
-- As soon as you reach the water behind the 4th guard:
+- Before talking to first boulder:
   - Use <PokeItem name="Super Repel" /> (keep up till Indigo Plateau).
   - Teach <PokeMove name="Strength" /> over <PokeMove name="Water Pulse" /> (Slot 2) if you do not have a <Pokemon name="Sandshrew" />.
 - Avoid all trainers.
